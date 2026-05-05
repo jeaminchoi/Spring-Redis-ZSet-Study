@@ -11,7 +11,10 @@ import sparta.study.api.category.entity.Category;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "products")
+@Table(name = "products",
+        indexes = {
+                @Index(name = "idx_products_name", columnList = "name"),
+        })
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @EntityListeners(AuditingEntityListener.class)
