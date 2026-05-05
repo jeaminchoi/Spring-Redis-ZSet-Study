@@ -34,7 +34,13 @@ public class ProductService {
     }
 
     // --------------실험 2 옵티마이저가 인덱스를 포기하는 조건--------------
-
+    public Product getProductListByName(String productName) {
+        Optional<Product> product = productRepository.findByNameFetch(productName);
+        if (product.isEmpty()) {
+            throw new IllegalStateException("Product with name " + productName + " not found");
+        }
+        return product.get();
+    }
 
     // --------------실험 3 복합 인덱스 설계--------------
 
